@@ -9,7 +9,12 @@ for line in open("input_points.txt", "r").readlines():
     pointsList.append(currentPoints)
 solutions=[]
 times=[]
-for element in pointsList[50:]:
+for element in pointsList:
+    if len(element)<=3:
+        options=([0], [0,1], [0,1,2])
+        solutions.append(options[len(element)-1])
+        times.append(0)
+        continue
     print("\n\nMOVING ON TO ", len(solutions))
     print("\n\n")
     solver = TSPSolver.from_data(*zip(*element), "EUC_2D")
