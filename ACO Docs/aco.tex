@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{mathtools}
+\usepackage{algpseudocode}
+\usepackage{amssymb}
+\title{Ant Colony Optimisation Meta Heuristics}
+\author{ {
+		Vinayak Sareen, Joseph McGeever, Sergiu Harjau, Alicja Osicka	
+	}
+}
+\date{}
+
+\begin{document}
+	\maketitle
+	\section{Introduction}
+	Ant colony is a optimisation problem inspired by foraging nature of ants to solve well known computer science combitoral problem Tsp(travelling sales person) problem. Combitoral optimisation problems intend to solve combination and permutation based problems in optimal combinations and permutations \citep*{SOCHA20081155}. The TSP purposes a problem which requires optimial path treversed in list of cities visited exactly once. The problem is NP-hard problem, which means that there doesnot exist a optimal polynomial solution for solving the problem \citep*{SOCHA20081155}. Heuristic based solution can be applied to solve such problem which doesnot ensure the best optimal path in covered in list of cities but 
+	solves the problem with descent solution in limited time constraints \citep*{SOCHA20081155}. 
+
+	\section{Ant Colony Optimisation}
+
+	ACO(Ant colony optimisation) algorithm was first purposed in as 'Ant System' as a novel heurstic solution to approach combitorial problems \citep*{782657}. The source of inspiration for ant system algorithm is taken from real ants. The inital path covered by the ant in search of food is in random direction and deposits a chemical known as phermone. The journey returning from destination to source point of journey the ants follows the phermone trails \citep*{SOCHA20081155}.  
+
+	\begin{algorithm}
+		\caption{Ant Colony Optimisation}
+		\begin{algorithmic}
+			\While{termination condition != False} 
+				\State SolutionConstruction()
+				\State PheromoneUpdate()
+				\State LocalSearch() [Optional]
+			\EndWhile
+		\end{algorithmic}
+	\end{algorithm}
+
+	\subsection*{Construction Function}	
+	The Solution construction function requires to build a appropriate solution in graph $G = (V, E)$ where V represents a vertices and E represents the weighted edge between the vertices. The construction of path is based on a probabilistic method mentioned in equation below \\ 
+
+	\begin{equation}
+		{p(c_{ij}) = \frac{\tau_{ij}^\alpha . \eta (c_{ij})^ \beta}{ \sum_{c_{ij}}{\tau_{ij}^\alpha . \eta^ \beta}}} , \forall  c_{ij} \in {\mathbb{N}}
+	\end{equation}
+
+	The ${p(c_{ij})}$ shows the probabilty of choosing the path i and j. ${\tau_{ij}}$ is the pheramone on the i and j vertices in the graphs. ${\eta}$ is path visibilty value, which is assigned at each construction a heuristic value to optimal solution edges \citep*{SOCHA20081155}.${\alpha}$ and ${\beta}$ are the hyper parameters in the euation controlling the relationship between pheramone information and heuristic information \citep*{SOCHA20081155}.
+
+	\subsection*{PheromoneUpdate Function}
+	The objective of the pheranome update function is to associate more phermone for path which has short edge distance between the vertices which can be achieved by increasing the ${\Delta{\tau_{i,j}^k}}$ pheromone level depsoited on ${i^th}$ and ${j^th}$ edge and decreasing the evaporation associate with edge with larger distances \citep*{SOCHA20081155}. The equation below shows the mathematical expression for calculating the pheromone deposited by ${k^th ant}$ in the graph.
+
+	{
+	\[
+		${\tau_{i, j}^k}$ 
+		\begin{cases}
+		\frac{1}{L^k}, & \text{L = length travelled by k ant on edge i and j } \\
+		0,             & \text{otherwise}
+		\end{cases}
+	\]  }
+
+\subsection*{Pheromone without evaporation}
+
+The equation above shows the euation for pheromone by single ant. Furthermore, if there exists m ants then the following equation would be used to calculate the pheromone without evaporation.
+
+\begin{equation}
+	\tau_{i, j} = \sum_{k=1}^m \Delta{\tau_{i, j} ^k}
+\end{equation} 
+
+the equation will compute the sum of all pheromone deposited by all the ants, where m is total number of artifical ants in the system \citep*{4129846}. 
+
+\subsection*{Pheromone with evaporation}
+\begin{equation}
+	\tau_{i, j} = (1-\rho) \tau_{i,j} + \sum_{k=1}^m \Delta{\tau_{i, j} ^k}
+\end{equation} 
+
+the equation above introduces new symbol ${\rho}$ which is a constant that ranges between 0 and 1 and is called evaporation rate. ${(1-\rho) \tau_{i,j}}$ substracts evaporation constant from 1 and multiply it with the current phermone, which simulates the process of evaporation \citep*{4129846}.
+
+\bibliographystyle{agsm}
+\bibliography{./ref} 
+\end{document}
