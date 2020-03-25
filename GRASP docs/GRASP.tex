@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{mathtools}
+\usepackage{algpseudocode}
+\usepackage{amssymb}
+
+\title {Greedy Randomized Adaptive Search Procedure (GRASP)}
+\author{ {
+		Vinayak Sareen, Joseph McGeever, Sergiu Harjau, Alicja Osicka	
+	}
+}
+\date{}
+
+\begin{document}
+	\maketitle
+	\section{GRASP}
+The GRASP metaheuristic was developed in late 1980’s (Feo and Resende, 1989). Since then it was under continuous development, and GRASP was applied to many problem areas such as Travelling Salesman Problem.
+GRASP is a general, metaheuristic, high level procedure used to find good (ideally optimal) solution to computationally difficult combinatorial optimization problems. (Darby-Dowman and Consoli, 2006) It is an iterative (or multi-start) process, with each iteration consisting of construction phase and local search phase. 
+\begin{algorithm}
+\caption{ GRASP metaheuristic}
+\Comment{Input: {$Integer MaxIterations$} and {$Seed$}}\\
+\Comment{Output: {$BestSolution$}}
+\begin {algorithmic}
+\For {$k \gets 1$ to $MaxIterations$}
+	\State {$Solution$ $\gets$ {$GreedyRandomizedConstruction(Seed)$}}
+	\State {$Solution$ $\gets$ {$LocalSearch(Solution)$}}
+	\State {$UpdateSolution(Solution,BestSolution)$}
+\EndFor
+\State \Return {$BestSolution$}
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection {Construction Phase}
+
+In the construction phase an easy and convenient solution is made by choosing the next element randomly in the Restricted Candidate List (RCL). RCL contains r best elements chosen by a greedy function. It allows to obtain a different solution at each iteration. 
+\begin{algorithm}
+\caption{ GreedyRandomizedConstruction}
+\Comment{Input: {$Seed$}}\\
+\Comment{Output: {$Solution$}}
+\begin {algorithmic}
+ 
+	\State {$Solution$ $\gets$ $\emptyset$}
+	\State {$Evaluate the incremental costs of the candidate elements$}
+	\While {$Solution is not complete Solution$}
+		\State {$Build the restricted candidate list (RCL)$}
+		\State {$Select an element s from the RCL at random$}
+		\State {$Solution$ {$\gets$} {$Solution$} {$\cup$} {$s$}}
+		\State {$Revaluate the incremental costs$}
+	\EndWhile
+	\State \Return {$Solution$}
+
+\end{algorithmic}
+\end{algorithm}
+\subsection {Local Search Phase}
+
+In the local search phase, the neighbourhood is investigated until a local minimum is found. Effectiveness of local search procedure depends on several aspects, such as the neighbourhood structure (density, regularity), neighbourhood search technique, fast evaluation of the cost function of the neighbours, and the starting solution itself. (Glover and Kochenberger, 2003)
+
+\begin{algorithm}
+\caption{ Local Search}
+\Comment{Input: {$Solution$}}\\
+\Comment{Output: {$Solution$}}
+\begin {algorithmic}
+\While {$Solution is not locally optimal$}
+\State {{$Find s’$} {$\in$} {$neighbourhood N(Solution) with f(s’)$} {$<$} {$f(Solution)$}}
+\State {{$Solution$} {$\gets$} {$s'$}}
+\EndWhile
+\State \Return {$Solution$}
+
+\end{algorithmic}
+\end{algorithm}
+
+The best overall solution is kept as a result. Solutions provided by the greedy randomized construction are not necessarily optimal, even with respect to simple neighbourhoods. (Glover and Kochenberger, 2003) Local search phase usually improves constructed solution. Local search algorithm works in iterative fashion, by successively replacing current solution by a better one in its neighbourhood.\\
+GRASP has two main parameters:\\
+\indent •	Parameter for stopping iterations.\\
+\indent•	Parameter related to the quality of the elements in RCL.\\
+The parameter for the maximum number of iterations needs to be present, to avoid never ending loops, and keeping the cost down.
+Probability of finding a new better solution then the current best decreases with every iteration, although the quality of the best solution may only improve towards the end. The computation time is pretty much the same for every iteration – computation time is predictable and increases linearly with the number of iterations.
+
+
+
+\end{document}
