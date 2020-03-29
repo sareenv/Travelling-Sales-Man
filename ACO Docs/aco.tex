@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{natbib}
+\usepackage[semicolon]{natbib}
 \usepackage{algorithm}
 \usepackage{mathtools}
 \usepackage{algpseudocode}
@@ -69,6 +69,16 @@ the equation will compute the sum of all pheromone deposited by all the ants, wh
 \end{equation} 
 
 the equation above introduces new symbol ${\rho}$ which is a constant that ranges between 0 and 1 and is called evaporation rate. ${(1-\rho) \tau_{i,j}}$ substracts evaporation constant from 1 and multiply it with the current phermone, which simulates the process of evaporation \citep*{4129846}.
+
+\subsection*{Time Complexity Analysis}
+
+1. Initialise the solution. ${O(n^2)}$ \\
+2. Each ant construct the solution ${O(n^2 m)}$ \\
+3. Update the pheramone in the system ${O(n^2)}$ \\
+4. Output the result ${O(1)}$.
+
+From the above steps it can be inffered that the time complextity for the ant colony optimisation algorithm after $I_{max}$ iterations can be estimated to be 
+${O(I_{max} n^2 m)}$, where m are the number of the ants in the system \citep*{7375763}.
 
 \bibliographystyle{agsm}
 \bibliography{./ref} 

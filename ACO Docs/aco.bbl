@@ -1,0 +1,26 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[{Dorigo} et~al.]{{Dorigo}, {Birattari} \harvardand\
+  {Stutzle}}{2006}{4129846}
+{Dorigo}, M., {Birattari}, M. \harvardand\ {Stutzle}, T.  \harvardyearleft
+  2006\harvardyearright , `Ant colony optimization', {\em IEEE Computational
+  Intelligence Magazine} {\bf 1}(4),~28--39.
+
+\harvarditem{{Dorigo} \harvardand\ {Di Caro}}{1999}{782657}
+{Dorigo}, M. \harvardand\ {Di Caro}, G.  \harvardyearleft 1999\harvardyearright
+  , Ant colony optimization: a new meta-heuristic, {\em in} `Proceedings of the
+  1999 Congress on Evolutionary Computation-CEC99 (Cat. No. 99TH8406)', Vol.~2,
+  pp.~1470--1477 Vol. 2.
+
+\harvarditem{{Li}}{2015}{7375763}
+{Li}, M.  \harvardyearleft 2015\harvardyearright , `Efficiency improvement of
+  ant colony optimization in solving the moderate ltsp', {\em Journal of
+  Systems Engineering and Electronics} {\bf 26}(6),~1300--1308.
+
+\harvarditem{Socha \harvardand\ Dorigo}{2008}{SOCHA20081155}
+Socha, K. \harvardand\ Dorigo, M.  \harvardyearleft 2008\harvardyearright ,
+  `Ant colony optimization for continuous domains', {\em European Journal of
+  Operational Research} {\bf 185}(3),~1155 -- 1173.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0377221706006333}
+
+\end{thebibliography}
