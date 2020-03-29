@@ -42,12 +42,12 @@ In the construction phase an easy and convenient solution is made by choosing th
 \begin {algorithmic}
  
 	\State {$Solution$ $\gets$ $\emptyset$}
-	\State {$Evaluate the incremental costs of the candidate elements$}
-	\While {$Solution is not complete Solution$}
-		\State {$Build the restricted candidate list (RCL)$}
-		\State {$Select an element s from the RCL at random$}
+	\State {Evaluate the incremental costs of the candidate elements}
+	\While {{$Solution$} is not complete {$Solution$}}
+		\State {Build the restricted candidate list (RCL)}
+		\State {Select an element {$s$} from the RCL at random}
 		\State {$Solution$ {$\gets$} {$Solution$} {$\cup$} {$s$}}
-		\State {$Revaluate the incremental costs$}
+		\State {Revaluate the incremental costs}
 	\EndWhile
 	\State \Return {$Solution$}
 
@@ -62,8 +62,8 @@ In the local search phase, the neighbourhood is investigated until a local minim
 \Comment{Input: {$Solution$}}\\
 \Comment{Output: {$Solution$}}
 \begin {algorithmic}
-\While {$Solution is not locally optimal$}
-\State {{$Find s’$} {$\in$} {$neighbourhood N(Solution) with f(s’)$} {$<$} {$f(Solution)$}}
+\While {{$Solution$} is not locally optimal}
+\State {Find {$s’$} {$\in$} neighbourhood {$N(Solution)$} with {$f(s’)$} {$<$} {$f(Solution)$}}
 \State {{$Solution$} {$\gets$} {$s'$}}
 \EndWhile
 \State \Return {$Solution$}
@@ -77,7 +77,6 @@ GRASP has two main parameters:\\
 \indent•	Parameter related to the quality of the elements in RCL.\\
 The parameter for the maximum number of iterations needs to be present, to avoid never ending loops, and keeping the cost down.
 Probability of finding a new better solution then the current best decreases with every iteration, although the quality of the best solution may only improve towards the end. The computation time is pretty much the same for every iteration – computation time is predictable and increases linearly with the number of iterations.
-
 
 
 \end{document}
