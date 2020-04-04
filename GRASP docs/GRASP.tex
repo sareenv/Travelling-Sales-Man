@@ -70,13 +70,24 @@ In the local search phase, the neighbourhood is investigated until a local minim
 
 \end{algorithmic}
 \end{algorithm}
-
+\subsection{ Solution }
 The best overall solution is kept as a result. Solutions provided by the greedy randomized construction are not necessarily optimal, even with respect to simple neighbourhoods. (Glover and Kochenberger, 2003) Local search phase usually improves constructed solution. Local search algorithm works in iterative fashion, by successively replacing current solution by a better one in its neighbourhood.\\
 GRASP has two main parameters:\\
 \indent •	Parameter for stopping iterations.\\
 \indent•	Parameter related to the quality of the elements in RCL.\\
 The parameter for the maximum number of iterations needs to be present, to avoid never ending loops, and keeping the cost down.
 Probability of finding a new better solution then the current best decreases with every iteration, although the quality of the best solution may only improve towards the end. The computation time is pretty much the same for every iteration – computation time is predictable and increases linearly with the number of iterations.
+
+\subsection{Time complexity analysis}
+
+1. Loop $n$ times: O($n^2$)\\
+2. Construction phase O($n^2$)\\
+3. Local search phase: O($n^2$)\\
+4. Update solution: O($1$)\\
+5. Apply $m$ constraints: O($m$)\\
+6. Return solution O($1$)\\
+
+Time complexity of GRASP algorithm is O($n^2)m$, where n is the number of iterations and m is the number of constraints.
 
 
 \end{document}
